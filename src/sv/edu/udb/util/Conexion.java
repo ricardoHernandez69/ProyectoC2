@@ -5,11 +5,13 @@
  */
 package sv.edu.udb.util;
 import java.sql.*;
+import org.apache.log4j.Logger;
 /**
  *
  * @author Ricardo
  */
 public class Conexion {
+    private final Logger log=Logger.getLogger(Conexion.class);
     private Connection conexion =null;
     private Statement s =null;
     private ResultSet rs=null;
@@ -25,12 +27,11 @@ public class Conexion {
             conexion = DriverManager.getConnection (link,user,pass);
             // Permite ejecutar sentencias SQL sin parámetros
             s = conexion.createStatement();
-            System.out.println("Conexion Exitosa");
+            
         }
         catch (ClassNotFoundException e1) {
             //Error si no puedo leer el driver de MySQL
-            System.out.println("ERROR:No encuentro el driver de la BD:"+
-                    e1.getMessage());
+            log.fatal("ERROR:No encuentro el driver de la BD: "+e1.getMessage());
         }
     }
     //Metodo que permite obtener los valores del resulset
@@ -44,7 +45,8 @@ public class Conexion {
             this.rs = s.executeQuery(sql);
         } catch (SQLException e2) {
             //Error SQL: login/passwd ó sentencia sql errónea
-            System.out.println("ERROR:Fallo en SQL: "+e2.getMessage());
+            
+            log.fatal("ERROR:Fallo en SQL: "+e2.getMessage());
         }
     }
     //Metodo que recibe un sql como parametro que sea un update,insert.delete

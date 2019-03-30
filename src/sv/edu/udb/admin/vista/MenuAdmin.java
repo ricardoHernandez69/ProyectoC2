@@ -12,7 +12,7 @@ import sv.edu.udb.admin.modelo.*;
  * @author usuario
  */
 public class MenuAdmin extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form MenuAdmin
      */
@@ -89,12 +89,16 @@ public class MenuAdmin extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        IngresoUsuario ingre=new IngresoUsuario();
-        desktopPane.add(ingre);
-         Dimension desktopSize = desktopPane.getSize();
-        Dimension FrameSize = ingre.getSize();
-        ingre.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-        ingre.show();
+        
+        if(IngresoUsuario.bandera==0){
+            IngresoUsuario ingre=new IngresoUsuario();
+            desktopPane.add(ingre);
+             Dimension desktopSize = desktopPane.getSize();
+            Dimension FrameSize = ingre.getSize();
+            ingre.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+            ingre.show();
+            IngresoUsuario.bandera=1;
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
