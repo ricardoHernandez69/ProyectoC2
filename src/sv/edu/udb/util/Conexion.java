@@ -34,10 +34,12 @@ public class Conexion {
             log.fatal("ERROR:No encuentro el driver de la BD: "+e1.getMessage());
         }
     }
+    
     //Metodo que permite obtener los valores del resulset
     public ResultSet getRs() {
         return rs;
     }
+    
     //Metodo que permite fijar la tabla resultado de la pregunta
     //SQL realizada
     public void setRs(String sql) {
@@ -49,10 +51,12 @@ public class Conexion {
             log.fatal("ERROR:Fallo en SQL: "+e2.getMessage());
         }
     }
+    
     //Metodo que recibe un sql como parametro que sea un update,insert.delete
     public void setQuery(String sql) throws SQLException {
         this.s.executeUpdate(sql);
     }
+    
     public boolean existeDato(String sql) throws SQLException{
         boolean result;
         int i=0; //Bandera, determina si existe o no un dato en la base de datos
@@ -67,6 +71,7 @@ public class Conexion {
         }
         return result;
     }
+    
     //Metodo que cierra la conexion
     public void cerrarConexion() throws SQLException{
         conexion.close();
