@@ -5,13 +5,22 @@
  */
 package sv.edu.udb.admin.vista;
 import java.awt.Dimension;
+import sv.edu.udb.util.Sesion;
 
 /**
  *
  * @author usuario
  */
 public class MenuAdmin extends javax.swing.JFrame {
-    
+
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+    private Sesion sesion;
     /**
      * Creates new form MenuAdmin
      */

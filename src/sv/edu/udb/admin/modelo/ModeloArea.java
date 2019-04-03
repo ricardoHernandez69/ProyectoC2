@@ -7,8 +7,6 @@ package sv.edu.udb.admin.modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sv.edu.udb.util.Conexion;
 
 /**
@@ -16,7 +14,7 @@ import sv.edu.udb.util.Conexion;
  * @author Ricardo
  */
 public class ModeloArea {
-    org.apache.log4j.Logger log=org.apache.log4j.Logger.getLogger(ModeloUsuario.class);
+    org.apache.log4j.Logger log=org.apache.log4j.Logger.getLogger(ModeloArea.class);
     private String sql;
     public ArrayList<BeansArea> mostrarAreas(){
         try{

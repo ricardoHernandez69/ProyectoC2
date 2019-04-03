@@ -5,3 +5,5 @@
 2019-04-01 17:32:19 FATAL ModeloUsuario:52 - Error al insertar admin: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vladi")",0,0)' at line 1
 2019-04-01 17:42:08 FATAL ModeloUsuario:53 - Error al insertar admin: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails
 2019-04-01 17:44:45 FATAL ModeloUsuario:54 - Error al insertar admin: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails
+2019-04-02 21:25:20 FATAL Conexion:51 - ERROR:Fallo en SQL: No operations allowed after statement closed.
+2019-04-02 21:27:28 ERROR Login:44 - Error al Loguearse: java.sql.SQLException: Before start of result set
