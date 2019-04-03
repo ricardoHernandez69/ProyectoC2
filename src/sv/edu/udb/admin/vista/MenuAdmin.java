@@ -5,7 +5,6 @@
  */
 package sv.edu.udb.admin.vista;
 import java.awt.Dimension;
-import sv.edu.udb.admin.modelo.*;
 
 /**
  *

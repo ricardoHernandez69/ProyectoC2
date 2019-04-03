@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package sv.edu.udb.admin.vista;
+import sv.edu.udb.admin.modelo.*;
+import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.util.*;
-import sv.edu.udb.admin.modelo.*;
-import sv.edu.udb.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +16,19 @@ import sv.edu.udb.util.*;
  */
 public final class IngresoUsuario extends javax.swing.JInternalFrame {
     ModeloUsuario modUsuario;
+    PanelVacio pVacio;
+    PanelJefe pJefe;
     static int bandera=0;
+    int tamaño=0;
+    int inicio=0;
+    
     /**
      * Creates new form IngresoUsuario
      */
     public IngresoUsuario() {
         initComponents();
         modUsuario=new ModeloUsuario();
-//        llenarTipo();
+        llenarTipo();
     }
 
     /**
@@ -34,7 +40,7 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmbTipoUsuario = new javax.swing.JComboBox<>();
+        cmbTipoUsuario = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -48,6 +54,8 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
         txtUsuario = new javax.swing.JTextField();
         contra = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        jpPrincipal = new javax.swing.JPanel();
+        btnIngresar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -71,7 +79,12 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoUsuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoUsuarioItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Tipo de usuario");
 
@@ -109,9 +122,15 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha de Nacimiento");
 
+        txtFecha.setToolTipText("");
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaActionPerformed(evt);
+            }
+        });
+        txtFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFechaKeyTyped(evt);
             }
         });
 
@@ -119,72 +138,100 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
 
         contra.setText("Contraseña");
 
+        javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
+        jpPrincipal.setLayout(jpPrincipalLayout);
+        jpPrincipalLayout.setHorizontalGroup(
+            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 296, Short.MAX_VALUE)
+        );
+        jpPrincipalLayout.setVerticalGroup(
+            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 146, Short.MAX_VALUE)
+        );
+
+        btnIngresar.setBackground(new java.awt.Color(102, 255, 102));
+        btnIngresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(jLabel5))
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(contra))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addComponent(jLabel3))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                        .addComponent(contra)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                    .addComponent(txtFecha)
-                    .addComponent(txtPassword))
-                .addContainerGap(146, Short.MAX_VALUE))
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(btnIngresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contra)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contra)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addComponent(btnIngresar)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,25 +271,121 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtApellidoKeyTyped
-
+    
     private void txtDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar())){
+            tamaño=txtDui.getText().length()-2;  
             Toolkit.getDefaultToolkit().beep();
-            evt.consume();
+            evt.consume(); 
+        }else{
+            tamaño=txtDui.getText().length(); 
+        }
+        if(tamaño==8){
+            txtDui.setText(txtDui.getText()+"-");
+        }else if(tamaño>9){
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume(); 
+        }else{
+            txtDui.setText(txtDui.getText());
         }
     }//GEN-LAST:event_txtDuiKeyTyped
+
+    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar())){
+            tamaño=txtFecha.getText().length()-10;  
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume(); 
+        }else{
+            tamaño=txtFecha.getText().length(); 
+        }
+        if(tamaño==2){
+            txtFecha.setText(txtFecha.getText()+"-");
+        }
+        if(tamaño==5){
+            txtFecha.setText(txtFecha.getText()+"-");
+        }else if(tamaño>9){
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume(); 
+        }else{
+            txtFecha.setText(txtFecha.getText());
+        }
+    }//GEN-LAST:event_txtFechaKeyTyped
+
+    private void cmbTipoUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoUsuarioItemStateChanged
+        // TODO add your handling code here:
+        if(inicio==0){
+            inicio++;
+        }else{
+            BeansTipoUsuario objec=(BeansTipoUsuario) cmbTipoUsuario.getSelectedItem();
+            if(objec.getId().equals("1")){
+                jpPrincipal.removeAll();
+                this.pVacio=new PanelVacio();
+                this.pVacio.setSize(296, 146);
+                this.pVacio.setLocation(5, 5);
+                jpPrincipal.add(this.pVacio,BorderLayout.CENTER);
+                jpPrincipal.revalidate();
+                jpPrincipal.repaint();
+                
+            }else if(objec.getId().equals("2")||objec.getId().equals("3")){
+                this.pJefe=new PanelJefe();
+                this.pJefe.setSize(296, 146);
+                this.pJefe.setLocation(5,5);
+                jpPrincipal.removeAll();
+                jpPrincipal.add(this.pJefe,BorderLayout.CENTER);
+                jpPrincipal.revalidate();
+                jpPrincipal.repaint();
+            }else{
+                
+                jpPrincipal.removeAll();
+            }
+        
+        }
+    }//GEN-LAST:event_cmbTipoUsuarioItemStateChanged
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+//        JOptionPane.showMessageDialog(null,"id: "+this.pEmpleado.getDatoId()+" nombre: "+this.pEmpleado.getDatoArea());
+        BeansTipoUsuario objec=(BeansTipoUsuario) cmbTipoUsuario.getSelectedItem();
+        String nombre=txtNombre.getText();
+        String apellido=txtApellido.getText();
+        String dui=txtDui.getText();
+        String fecha=txtFecha.getText();
+        String usuario=txtUsuario.getText();
+        String password=new String(txtPassword.getPassword());
+        if(modUsuario.existeUsuario(usuario)==false){
+            if(objec.getId().equals("1")){
+
+                if(modUsuario.ingresarAdmin(nombre, apellido, dui, fecha, usuario, password,objec.getId())==true){
+                    JOptionPane.showMessageDialog(this, "El usuario se ha ingresado con Exito");
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se pude Ingresar el usuario","Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }else if(objec.getId().equals("2")||objec.getId().equals("3")){
+                String area=pJefe.getDatoArea();
+                String idArea=pJefe.getDatoId();
+                if(modUsuario.ingresarJefeArea(nombre, apellido, dui, fecha, usuario, password, objec.getId(), area, idArea)){
+                  JOptionPane.showMessageDialog(this, "El usuario se ha ingresado con Exito");
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se pude Ingresar el usuario","Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }else{JOptionPane.showMessageDialog(this, "Este usuario ya existe, porfavor elejir otro usuario","Error",JOptionPane.ERROR_MESSAGE);}
+        
+    }//GEN-LAST:event_btnIngresarActionPerformed
     public void llenarTipo(){
         cmbTipoUsuario.removeAllItems();
         
-        ArrayList<TipoUsuarioBeans> arreglo=modUsuario.mostrarTipo();
-        for(TipoUsuarioBeans objetoTipo:arreglo){
-            cmbTipoUsuario.addItem(objetoTipo.getTipo());
+        ArrayList<BeansTipoUsuario> arreglo=modUsuario.mostrarTipo();
+        for(BeansTipoUsuario objetoTipo:arreglo){
+            cmbTipoUsuario.addItem(objetoTipo);
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbTipoUsuario;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JComboBox cmbTipoUsuario;
     private javax.swing.JLabel contra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -250,6 +393,7 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jpPrincipal;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDui;
     private javax.swing.JTextField txtFecha;

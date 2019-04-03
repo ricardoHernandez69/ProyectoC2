@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sv.edu.udb.util;
+package sv.edu.udb.admin.modelo;
 
 /**
  *
  * @author Ricardo
  */
-public class TipoUsuarioBeans {
+public class BeansTipoUsuario {
     private String id;
     private String tipo;
     /**
@@ -39,5 +39,8 @@ public class TipoUsuarioBeans {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+    @Override
+    public String toString() {
+      return tipo;
+   }
 }
