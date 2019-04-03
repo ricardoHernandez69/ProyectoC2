@@ -7,6 +7,7 @@ package proyectoc2;
 
 import javax.swing.JOptionPane;
 import sv.edu.udb.admin.vista.MenuAdmin;
+import sv.edu.udb.jefedesarrollo.vista.MenuJefeDesarrollo;
 import sv.edu.udb.util.Sesion;
 
 /**
@@ -113,6 +114,12 @@ public class Index extends javax.swing.JFrame {
                 MenuAdmin mAdmin=new MenuAdmin();
                 mAdmin.setSesion(sesion);
                 mAdmin.setVisible(true);
+                this.setVisible(false);
+            }
+            if(sesion.getTipo().equals("2")){
+                MenuJefeDesarrollo mJefeDesa=new MenuJefeDesarrollo();
+                mJefeDesa.setSesion(sesion);
+                mJefeDesa.setVisible(true);
                 this.setVisible(false);
             }
         }else{

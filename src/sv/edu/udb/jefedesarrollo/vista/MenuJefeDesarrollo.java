@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sv.edu.udb.util.Conexion;
+import sv.edu.udb.util.Sesion;
 
 /**
  *
@@ -16,6 +17,14 @@ import sv.edu.udb.util.Conexion;
  */
 public class MenuJefeDesarrollo extends javax.swing.JFrame {
 
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+    private Sesion sesion;
     /**
      * Creates new form MenuJefeDesarrollo
      */
