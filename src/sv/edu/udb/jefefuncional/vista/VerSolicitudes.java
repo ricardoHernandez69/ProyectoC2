@@ -75,7 +75,6 @@ public class VerSolicitudes extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSolicitudes = new javax.swing.JTable();
-        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,22 +99,13 @@ public class VerSolicitudes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbSolicitudes);
 
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,17 +113,11 @@ public class VerSolicitudes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +155,6 @@ public class VerSolicitudes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbSolicitudes;
     // End of variables declaration//GEN-END:variables

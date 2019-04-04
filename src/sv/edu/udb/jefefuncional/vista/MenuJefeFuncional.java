@@ -30,39 +30,54 @@ public class MenuJefeFuncional extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
+        menuSolicitud = new javax.swing.JMenuItem();
+        menuEmpleados = new javax.swing.JMenuItem();
+        menuRoles = new javax.swing.JMenuItem();
+        menuVerSolicitudes = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
+        menuSolicitud.setMnemonic('o');
+        menuSolicitud.setText("Crear Solicitud");
+        menuSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSolicitudActionPerformed(evt);
+            }
+        });
+        fileMenu.add(menuSolicitud);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
+        menuEmpleados.setMnemonic('s');
+        menuEmpleados.setText("Ver Empleados");
+        menuEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEmpleadosActionPerformed(evt);
+            }
+        });
+        fileMenu.add(menuEmpleados);
 
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        menuRoles.setMnemonic('a');
+        menuRoles.setText("Asignar Cargos");
+        menuRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRolesActionPerformed(evt);
+            }
+        });
+        fileMenu.add(menuRoles);
+
+        menuVerSolicitudes.setText("Ver Solicitudes");
+        menuVerSolicitudes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerSolicitudesActionPerformed(evt);
+            }
+        });
+        fileMenu.add(menuVerSolicitudes);
 
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("Salir");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
@@ -71,40 +86,6 @@ public class MenuJefeFuncional extends javax.swing.JFrame {
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
-
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
-
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
-
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
-
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
 
@@ -125,6 +106,38 @@ public class MenuJefeFuncional extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void menuSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSolicitudActionPerformed
+        desktopPane.removeAll();
+        AperturaCasoJefeFuncional panel = new AperturaCasoJefeFuncional();
+        this.setSize(panel.getWidth(), panel.getHeight() + 50);
+        desktopPane.add(panel.getContentPane());
+        desktopPane.updateUI();
+    }//GEN-LAST:event_menuSolicitudActionPerformed
+
+    private void menuEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEmpleadosActionPerformed
+        desktopPane.removeAll();
+        VerEmpleados panel = new VerEmpleados();
+        this.setSize(panel.getWidth(), panel.getHeight() + 50);
+        desktopPane.add(panel.getContentPane());
+        desktopPane.updateUI();
+    }//GEN-LAST:event_menuEmpleadosActionPerformed
+
+    private void menuRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRolesActionPerformed
+        desktopPane.removeAll();
+        AsignarRoles panel = new AsignarRoles();
+        this.setSize(panel.getWidth(), panel.getHeight() + 50);
+        desktopPane.add(panel.getContentPane());
+        desktopPane.updateUI();
+    }//GEN-LAST:event_menuRolesActionPerformed
+
+    private void menuVerSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerSolicitudesActionPerformed
+        desktopPane.removeAll();
+        VerSolicitudes panel = new VerSolicitudes();
+        this.setSize(panel.getWidth(), panel.getHeight() + 50);
+        desktopPane.add(panel.getContentPane());
+        desktopPane.updateUI();
+    }//GEN-LAST:event_menuVerSolicitudesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,21 +175,14 @@ public class MenuJefeFuncional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenuItem menuEmpleados;
+    private javax.swing.JMenuItem menuRoles;
+    private javax.swing.JMenuItem menuSolicitud;
+    private javax.swing.JMenuItem menuVerSolicitudes;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -31,8 +31,9 @@ public class AsignarRoles extends javax.swing.JFrame {
      */
     public AsignarRoles() {
         initComponents();
-        llenarEmpleados();
         llenarRoles();
+        llenarEmpleados();
+        cbRoles.setSelectedIndex(empleados.get(cbEmpleados.getSelectedIndex()).getCargoEmpleado() - 1);
     }
     
     public void llenarEmpleados(){
@@ -75,6 +76,7 @@ public class AsignarRoles extends javax.swing.JFrame {
             ResultSet rs = con.getRs();
             while(rs.next()){
                 Cargo cargo = new Cargo();
+                cargo.setIdCargo(rs.getInt("idCargo"));
                 cargo.setNombreCargo(rs.getString("nombreCargo"));
                 cargos.add(cargo);
                 car.add(cargo.getNombreCargo());
@@ -189,7 +191,10 @@ public class AsignarRoles extends javax.swing.JFrame {
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
         try{
-            empleados.get(cbEmpleados.getSelectedIndex()).asignarRol(cargos.get(cbRoles.getSelectedIndex()).getIdCargo());
+            Empleado emp = empleados.get(cbEmpleados.getSelectedIndex());
+            emp.asignarRol(cargos.get(cbRoles.getSelectedIndex()).getIdCargo());
+            llenarEmpleados();
+            cbRoles.setSelectedIndex(empleados.get(cbEmpleados.getSelectedIndex()).getCargoEmpleado() - 1);
             JOptionPane.showMessageDialog(this, "Se ha asignado el cargo al empleado");
         }
         catch(SQLException ex){

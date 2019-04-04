@@ -41,7 +41,6 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtDetalles = new javax.swing.JTextField();
         btnEnviar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,13 +50,6 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -75,9 +67,7 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,9 +77,7 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEnviar)
-                    .addComponent(btnCancelar))
+                .addComponent(btnEnviar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -112,10 +100,6 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,7 +137,6 @@ public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtDetalles;
