@@ -5,11 +5,23 @@
  */
 package sv.edu.udb.empleadodesarrollo.vista;
 
+import sv.edu.udb.util.Sesion;
+
 /**
  *
  * @author Ricardo
  */
 public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
+
+    private Sesion sesion;
+
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
 
     /**
      * Creates new form MenuEmpleadoDesarrollo
@@ -30,9 +42,9 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
+        casoMenuItem = new javax.swing.JMenuItem();
+        correcMenuItem = new javax.swing.JMenuItem();
+        bitaAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
@@ -48,18 +60,32 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
+        casoMenuItem.setMnemonic('o');
+        casoMenuItem.setText("Casos");
+        casoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casoMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(casoMenuItem);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
+        correcMenuItem.setMnemonic('s');
+        correcMenuItem.setText("Correcciones");
+        correcMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correcMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(correcMenuItem);
 
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        bitaAsMenuItem.setMnemonic('a');
+        bitaAsMenuItem.setText("Bitacora");
+        bitaAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bitaAsMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(bitaAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -126,6 +152,39 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    private void casoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casoMenuItemActionPerformed
+        // TODO add your handling code here:
+        try {
+            JInternalFrameCasos caso = new JInternalFrameCasos();
+            caso.setSesion(sesion);
+            desktopPane.add(caso);
+            caso.show();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_casoMenuItemActionPerformed
+
+    private void correcMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correcMenuItemActionPerformed
+        // TODO add your handling code here:
+        try {
+            JInternalFrameCorrecciones correc = new JInternalFrameCorrecciones();
+            correc.setSesion(sesion);
+            desktopPane.add(correc);
+            correc.show();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_correcMenuItemActionPerformed
+
+    private void bitaAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitaAsMenuItemActionPerformed
+        // TODO add your handling code here:
+        try {
+            JInternalFrameBitacora bita = new JInternalFrameBitacora();
+            bita.setSesion(sesion);
+            desktopPane.add(bita);
+            bita.show();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bitaAsMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -152,6 +211,7 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MenuEmpleadoDesarrollo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -163,8 +223,11 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem bitaAsMenuItem;
+    private javax.swing.JMenuItem casoMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
+    private javax.swing.JMenuItem correcMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
@@ -173,10 +236,7 @@ public class MenuEmpleadoDesarrollo extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
