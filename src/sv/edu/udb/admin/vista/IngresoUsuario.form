@@ -206,6 +206,9 @@
     <Component class="javax.swing.JPasswordField" name="txtPassword">
     </Component>
     <Container class="javax.swing.JPanel" name="jpPrincipal">
+      <Properties>
+        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
