@@ -130,10 +130,15 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-        JInternalFrameSolicitudes frm = new JInternalFrameSolicitudes();
-        desktopPane.add(frm);
-        frm.setSesion(this.getSesion());
-        frm.show();
+        try{
+            JInternalFrameSolicitudes frm = new JInternalFrameSolicitudes();
+            desktopPane.add(frm);
+            frm.setSesion(this.getSesion());
+            frm.show();
+        }
+        catch(SQLException ex){
+            
+        }
         
     }//GEN-LAST:event_openMenuItemActionPerformed
 
@@ -146,7 +151,7 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        JInternalFrameReporte frm = new JInternalFrameReporte();
+        JInternalFrameReportes frm = new JInternalFrameReportes();
         desktopPane.add(frm);
         frm.show();
     }//GEN-LAST:event_saveAsMenuItemActionPerformed

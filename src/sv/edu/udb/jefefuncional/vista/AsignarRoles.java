@@ -15,6 +15,7 @@ import sv.edu.udb.jefefuncional.modelo.Cargo;
 import sv.edu.udb.jefefuncional.modelo.Empleado;
 import sv.edu.udb.jefefuncional.modelo.JefeArea;
 import sv.edu.udb.util.Conexion;
+import sv.edu.udb.util.Sesion;
 
 /**
  *
@@ -25,6 +26,16 @@ public class AsignarRoles extends javax.swing.JFrame {
     int idJefe = 1;
     List<Empleado> empleados = new ArrayList<>();
     List<Cargo> cargos = new ArrayList<>();
+    
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+
+    private Sesion sesion;
 
     /**
      * Creates new form AsignarRoles

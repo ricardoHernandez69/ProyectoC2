@@ -5,12 +5,23 @@
  */
 package sv.edu.udb.jefefuncional.vista;
 
+import sv.edu.udb.util.Sesion;
+
 /**
  *
  * @author Ricardo
  */
 public class MenuJefeFuncional extends javax.swing.JFrame {
+    
+    public Sesion getSesion() {
+        return sesion;
+    }
 
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+
+    private Sesion sesion;
     /**
      * Creates new form MenuJefeFuncional
      */
@@ -110,6 +121,7 @@ public class MenuJefeFuncional extends javax.swing.JFrame {
     private void menuSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSolicitudActionPerformed
         desktopPane.removeAll();
         AperturaCasoJefeFuncional panel = new AperturaCasoJefeFuncional();
+        panel.setSesion(sesion);
         this.setSize(panel.getWidth(), panel.getHeight() + 50);
         desktopPane.add(panel.getContentPane());
         desktopPane.updateUI();

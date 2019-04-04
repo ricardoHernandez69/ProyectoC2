@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import sv.edu.udb.admin.vista.MenuAdmin;
 import sv.edu.udb.empleadofuncional.vista.MenuEmpleadoFuncional;
 import sv.edu.udb.jefedesarrollo.vista.MenuJefeDesarrollo;
+import sv.edu.udb.jefefuncional.vista.MenuJefeFuncional;
 import sv.edu.udb.util.Sesion;
 
 /**
@@ -121,6 +122,12 @@ public class Index extends javax.swing.JFrame {
                 MenuJefeDesarrollo mJefeDesa=new MenuJefeDesarrollo();
                 mJefeDesa.setSesion(sesion);
                 mJefeDesa.setVisible(true);
+                this.setVisible(false);
+            }
+            if(sesion.getTipo().equals("3")){
+                MenuJefeFuncional mJefeFunc=new MenuJefeFuncional();
+                mJefeFunc.setSesion(sesion);
+                mJefeFunc.setVisible(true);
                 this.setVisible(false);
             }
             if(sesion.getTipo().equals("5")){

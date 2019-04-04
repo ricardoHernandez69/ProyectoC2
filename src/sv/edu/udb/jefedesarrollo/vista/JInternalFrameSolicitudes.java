@@ -46,8 +46,10 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
         this.tableSolicitudes.setModel(modelo);
         
         ResultSet set = jefe.obtenerSolicitudes();
+        modelo.setRowCount(0);
         while(set.next()){
-            
+            Object[] row = {set.getInt("idSolicitud"), set.getString("descripcionSolicitud"), set.getString("nombresEmpleado"), set.getString("apellidosEmpleado")};
+            modelo.addRow(row);
         }
         
         

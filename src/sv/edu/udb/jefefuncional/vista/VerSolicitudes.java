@@ -14,6 +14,7 @@ import sv.edu.udb.jefefuncional.modelo.Empleado;
 import sv.edu.udb.jefefuncional.modelo.EstadoSolicitud;
 import sv.edu.udb.jefefuncional.modelo.JefeArea;
 import sv.edu.udb.util.Conexion;
+import sv.edu.udb.util.Sesion;
 
 /**
  *
@@ -22,6 +23,15 @@ import sv.edu.udb.util.Conexion;
 public class VerSolicitudes extends javax.swing.JFrame {
     Conexion con;
     DefaultTableModel modelo;
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+
+    private Sesion sesion;
     
     /**
      * Creates new form VerSolicitudes

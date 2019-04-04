@@ -9,12 +9,22 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import sv.edu.udb.jefefuncional.modelo.JefeArea;
 import sv.edu.udb.jefefuncional.modelo.Solicitud;
+import sv.edu.udb.util.Sesion;
 
 /**
  *
  * @author Raul
  */
 public class AperturaCasoJefeFuncional extends javax.swing.JFrame {
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+
+    private Sesion sesion;
     JefeArea jefe;
     /**
      * Creates new form AperturaCasoJefeFuncional
