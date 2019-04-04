@@ -46,7 +46,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenu2 = new javax.swing.JMenu();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
@@ -65,11 +64,13 @@ public class MenuAdmin extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         jMenuItem2.setText("Listar Usuarios");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
         jMenu1.add(jSeparator2);
-
-        jMenuItem3.setText("Modificar Usuario");
-        jMenu1.add(jMenuItem3);
         jMenu1.add(jSeparator3);
 
         menuBar.add(jMenu1);
@@ -108,6 +109,19 @@ public class MenuAdmin extends javax.swing.JFrame {
             IngresoUsuario.bandera=1;
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+            if(MostrarUsuarios.bandera==0){
+            MostrarUsuarios ingre=new MostrarUsuarios();
+            desktopPane.add(ingre);
+             Dimension desktopSize = desktopPane.getSize();
+            Dimension FrameSize = ingre.getSize();
+            ingre.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+            ingre.show();
+            MostrarUsuarios.bandera=1;
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,7 +164,6 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

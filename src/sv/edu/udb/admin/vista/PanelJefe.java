@@ -15,9 +15,12 @@ import sv.edu.udb.util.Validaciones;
  * @author Ricardo
  */
 public class PanelJefe extends javax.swing.JPanel {
+
+    
     ModeloArea mArea;
     private String datoId;
     private String datoArea;
+    private String idTipo;
     public String getDatoId() {
         return datoId;
     }
@@ -27,8 +30,10 @@ public class PanelJefe extends javax.swing.JPanel {
     int inicio=0;
     /**
      * Creates new form PanelEmpleado
+     * @param idTipo
      */
-    public PanelJefe() {
+    public PanelJefe(String idTipo) {
+        this.idTipo=idTipo;
         initComponents();
         mArea=new ModeloArea();
         llenarAreas();
@@ -44,7 +49,7 @@ public class PanelJefe extends javax.swing.JPanel {
     
     public void llenarAreas(){
         cmbArea.removeAllItems();
-        ArrayList<BeansArea> arregloArea=mArea.mostrarAreas();
+        ArrayList<BeansArea> arregloArea=mArea.mostrarAreas(this.idTipo);
         arregloArea.forEach((objetoArea) -> {
             cmbArea.addItem(objetoArea);
         });

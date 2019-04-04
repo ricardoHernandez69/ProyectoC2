@@ -18,6 +18,7 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
     ModeloUsuario modUsuario;
     PanelVacio pVacio;
     PanelJefe pJefe;
+    PanelEmpleado pEmpleado;
     static int bandera=0;
     int tamaño=0;
     int inicio=0;
@@ -137,6 +138,8 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
         jLabel6.setText("Usuario");
 
         contra.setText("Contraseña");
+
+        jpPrincipal.setVerifyInputWhenFocusTarget(false);
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -319,26 +322,38 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
             inicio++;
         }else{
             BeansTipoUsuario objec=(BeansTipoUsuario) cmbTipoUsuario.getSelectedItem();
-            if(objec.getId().equals("1")){
-                jpPrincipal.removeAll();
-                this.pVacio=new PanelVacio();
-                this.pVacio.setSize(296, 146);
-                this.pVacio.setLocation(5, 5);
-                jpPrincipal.add(this.pVacio,BorderLayout.CENTER);
-                jpPrincipal.revalidate();
-                jpPrincipal.repaint();
-                
-            }else if(objec.getId().equals("2")||objec.getId().equals("3")){
-                this.pJefe=new PanelJefe();
-                this.pJefe.setSize(296, 146);
-                this.pJefe.setLocation(5,5);
-                jpPrincipal.removeAll();
-                jpPrincipal.add(this.pJefe,BorderLayout.CENTER);
-                jpPrincipal.revalidate();
-                jpPrincipal.repaint();
-            }else{
-                
-                jpPrincipal.removeAll();
+            switch (objec.getId()) {
+                case "1":
+                    jpPrincipal.removeAll();
+                    this.pVacio=new PanelVacio();
+                    this.pVacio.setSize(296, 146);
+                    this.pVacio.setLocation(5, 5);
+                    jpPrincipal.add(this.pVacio,BorderLayout.CENTER);
+                    jpPrincipal.revalidate();
+                    jpPrincipal.repaint();
+                    break;
+                case "2":
+                case "3":
+                    this.pJefe=new PanelJefe(objec.getId());
+                    this.pJefe.setSize(296, 146);
+                    this.pJefe.setLocation(5,5);
+                    jpPrincipal.removeAll();
+                    jpPrincipal.add(this.pJefe,BorderLayout.CENTER);
+                    jpPrincipal.revalidate();
+                    jpPrincipal.repaint();
+                    break;
+                case "4":
+                case "5":
+                    jpPrincipal.removeAll();
+                    this.pEmpleado=new PanelEmpleado(objec.getId());
+                    this.pEmpleado.setSize(296, 146);
+                    this.pEmpleado.setLocation(5,5);
+                    jpPrincipal.add(this.pEmpleado,BorderLayout.CENTER);
+                    jpPrincipal.revalidate();
+                    jpPrincipal.repaint();
+                    break;
+                default:
+                    break;
             }
         
         }
@@ -359,13 +374,24 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
 
                 if(modUsuario.ingresarAdmin(nombre, apellido, dui, fecha, usuario, password,objec.getId())==true){
                     JOptionPane.showMessageDialog(this, "El usuario se ha ingresado con Exito");
+                    limpiarTexto();
                 }else{
                     JOptionPane.showMessageDialog(this, "No se pude Ingresar el usuario","Error",JOptionPane.ERROR_MESSAGE);
                 }
             }else if(objec.getId().equals("2")||objec.getId().equals("3")){
                 String area=pJefe.getDatoArea();
                 String idArea=pJefe.getDatoId();
-                if(modUsuario.ingresarJefeArea(nombre, apellido, dui, fecha, usuario, password, objec.getId(), area, idArea)){
+                if(modUsuario.ingresarJefe(nombre, apellido, dui, fecha, usuario, password, objec.getId(), area, idArea)){
+                  JOptionPane.showMessageDialog(this, "El usuario se ha ingresado con Exito");
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se pude Ingresar el usuario","Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }else if(objec.getId().equals("4")||objec.getId().equals("5")){
+                String area=pEmpleado.getDatoArea();
+                String idArea=pEmpleado.getDatoIdArea();
+                String cargo=pEmpleado.getDatoCargo();
+                String idCargo=pEmpleado.getDatoIdCargo();
+                if(modUsuario.ingresarEmpleado(nombre, apellido, dui, fecha, usuario, password, objec.getId(), area, idArea, cargo, idCargo)){
                   JOptionPane.showMessageDialog(this, "El usuario se ha ingresado con Exito");
                 }else{
                     JOptionPane.showMessageDialog(this, "No se pude Ingresar el usuario","Error",JOptionPane.ERROR_MESSAGE);
@@ -374,6 +400,14 @@ public final class IngresoUsuario extends javax.swing.JInternalFrame {
         }else{JOptionPane.showMessageDialog(this, "Este usuario ya existe, porfavor elejir otro usuario","Error",JOptionPane.ERROR_MESSAGE);}
         
     }//GEN-LAST:event_btnIngresarActionPerformed
+    public void limpiarTexto(){
+        this.txtApellido.setText("");
+        this.txtDui.setText("");
+        this.txtFecha.setText("");
+        this.txtNombre.setText("");
+        this.txtPassword.setText("");
+        this.txtUsuario.setText("");
+    }
     public void llenarTipo(){
         cmbTipoUsuario.removeAllItems();
         

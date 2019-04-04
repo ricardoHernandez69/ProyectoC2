@@ -16,10 +16,29 @@ import sv.edu.udb.util.Conexion;
 public class ModeloArea {
     org.apache.log4j.Logger log=org.apache.log4j.Logger.getLogger(ModeloArea.class);
     private String sql;
-    public ArrayList<BeansArea> mostrarAreas(){
+    public ArrayList<BeansArea> mostrarAreas(String tipo){
         try{
             Conexion con=new Conexion();
-            sql="SELECT * FROM areas";
+            switch (tipo) {
+                case "2":
+                case "Jefe de Desarrollo": 
+                    sql="SELECT * FROM areas WHERE idArea NOT IN (SELECT idAreaDesarrollo FROM jefesDesarrollo)";
+                    break;
+                case "3":
+                case "Jefe de Area Funcional":
+                    sql="SELECT * FROM areas WHERE idArea NOT IN (SELECT e.areaEmpleado FROM empleados e INNER JOIN jefesArea ja on e.idEmpleado=ja.idEmpleado)";
+                    break;
+                case "4":
+                case "Programador":
+                    sql="SELECT * FROM areas WHERE idArea=(SELECT idAreaDesarrollo FROM jefesDesarrollo)";
+                    break;
+                case "5":
+                case "Empleado Funcional":
+                    sql="SELECT * FROM areas WHERE idArea in (SELECT e.areaEmpleado FROM empleados e INNER JOIN jefesArea ja on e.idEmpleado=ja.idEmpleado)";
+                    break;
+                default:
+                    return null;
+            }
             con.setRs(sql);
             ResultSet rs=con.getRs();
             ArrayList<BeansArea> arreglo= new ArrayList();

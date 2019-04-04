@@ -7,3 +7,8 @@
 2019-04-01 17:44:45 FATAL ModeloUsuario:54 - Error al insertar admin: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails
 2019-04-02 21:25:20 FATAL Conexion:51 - ERROR:Fallo en SQL: No operations allowed after statement closed.
 2019-04-02 21:27:28 ERROR Login:44 - Error al Loguearse: java.sql.SQLException: Before start of result set
+2019-04-03 16:33:40 FATAL Conexion:51 - ERROR:Fallo en SQL: Subquery returns more than 1 row
+2019-04-03 16:34:47 FATAL Conexion:51 - ERROR:Fallo en SQL: Subquery returns more than 1 row
+2019-04-03 17:15:15 FATAL ModeloUsuario:146 - Error al insertar Empleado: java.sql.SQLException: Subquery returns more than 1 row
+2019-04-03 17:21:47 FATAL ModeloUsuario:146 - Error al insertar Empleado: java.sql.SQLException: Subquery returns more than 1 row
+2019-04-03 19:57:44 FATAL ModeloUsuario:104 - Error al insertar jefe: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'nombreCargo' at row 1
