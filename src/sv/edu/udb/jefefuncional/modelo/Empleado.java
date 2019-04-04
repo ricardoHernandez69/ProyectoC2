@@ -165,4 +165,10 @@ public class Empleado {
         con.cerrarConexion();
     }
     
+    public void asignarRol (int idRol) throws SQLException{
+        Conexion con = new Conexion();
+        con.setQuery("UPDATE empleados SET cargoEmpleado = " + idRol + " WHERE idEmpleado = " + idEmpleado);
+        con.cerrarConexion();
+    }
+    
 }
