@@ -5,6 +5,11 @@
  */
 package sv.edu.udb.jefedesarrollo.vista;
 
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import sv.edu.udb.jefedesarrollo.modelo.jefeDesarrollo;
+import sv.edu.udb.util.Sesion;
+
 /**
  *
  * @author josea
@@ -14,8 +19,38 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
     /**
      * Creates new form SolicitudesJInternalFrame
      */
-    public JInternalFrameSolicitudes() {
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+    
+    private Sesion sesion;
+    
+    public jefeDesarrollo jefe = new jefeDesarrollo();
+    
+    public JInternalFrameSolicitudes() throws SQLException {
         initComponents();
+        
+        jefe.setearIdUsuario(this.getSesion().getId());
+        
+        jefe.obtenerIdEmpleado();
+        
+        jefe.obtenerArea();
+        
+        Object[][] data =  null;
+        String[] nombreColumnas = {"id Solicitud", "Descripción de la solicitud", "Nombre Solicitante", "Apellidos Solicitante" };
+        DefaultTableModel modelo = new DefaultTableModel(data, nombreColumnas);
+        this.tableSolicitudes.setModel(modelo);
+        
+        ResultSet set = jefe.obtenerSolicitudes();
+        while(set.next()){
+            
+        }
+        
+        
     }
 
     /**
@@ -28,18 +63,18 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableSolicitudes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAprobar = new javax.swing.JButton();
+        btnRechazar = new javax.swing.JButton();
+        btnVerDetalles = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtFiltroSolicitudes = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,7 +85,7 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableSolicitudes);
 
         jLabel1.setText("Solicitudes");
 
@@ -58,11 +93,11 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setAutoscrolls(true);
 
-        jButton1.setText("Aprobar");
+        btnAprobar.setText("Aprobar");
 
-        jButton2.setText("Rechazar");
+        btnRechazar.setText("Rechazar");
 
-        jButton3.setText("Ver detalles");
+        btnVerDetalles.setText("Ver detalles");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,20 +106,20 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAprobar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRechazar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton3)
+                .addComponent(btnVerDetalles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnAprobar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnRechazar)
                 .addGap(19, 19, 19))
         );
 
@@ -110,7 +145,7 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1)))
+                        .addComponent(txtFiltroSolicitudes)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -132,7 +167,7 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFiltroSolicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,16 +182,16 @@ public class JInternalFrameSolicitudes extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAprobar;
+    private javax.swing.JButton btnRechazar;
+    private javax.swing.JButton btnVerDetalles;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableSolicitudes;
+    private javax.swing.JTextField txtFiltroSolicitudes;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ package sv.edu.udb.jefedesarrollo.vista;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sv.edu.udb.jefedesarrollo.modelo.jefeDesarrollo;
 import sv.edu.udb.util.Conexion;
 import sv.edu.udb.util.Sesion;
 
@@ -24,12 +25,14 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
     public void setSesion(Sesion sesion) {
         this.sesion = sesion;
     }
+    
     private Sesion sesion;
     /**
      * Creates new form MenuJefeDesarrollo
      */
     public MenuJefeDesarrollo() {
         initComponents();
+        
     }
 
     /**
@@ -129,6 +132,7 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
         // TODO add your handling code here:
         JInternalFrameSolicitudes frm = new JInternalFrameSolicitudes();
         desktopPane.add(frm);
+        frm.setSesion(this.getSesion());
         frm.show();
         
     }//GEN-LAST:event_openMenuItemActionPerformed
@@ -151,6 +155,8 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
         Conexion con;
         try {
             /* Set the Nimbus look and feel */
@@ -187,17 +193,10 @@ public class MenuJefeDesarrollo extends javax.swing.JFrame {
                 new MenuJefeDesarrollo().setVisible(true);
             }
         });
-    }
-    
-    //Funciones que implementan las consultas a la base de datos
-    public void ingresarCaso(){
+        
         
     }
-    
-    public void obtenerSolicitudes(){
-    
-    }
-    
+        
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
